@@ -20,7 +20,7 @@ class spike64(targets.Target):
     support_unavailable_control = True
 
     def create(self):
-        # 32-bit FPRs only
-        return testlib.Spike(self, isa="RV64IMAFC", progbufsize=0,
-                abstract_rti=30, support_abstract_csr=True,
+        # 32-bit FPRs only; progbufsize=0 enables SBA (--dm-sba 64)
+        return testlib.Spike(self, isa="RV64IMAFC",
+                progbufsize=0, abstract_rti=30, support_abstract_csr=True,
                 support_abstract_fpr=True)
